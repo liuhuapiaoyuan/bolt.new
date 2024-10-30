@@ -1,9 +1,13 @@
-import { createAnthropic } from '@ai-sdk/anthropic';
+import { getOpenaiModel } from './openai.model';
+import { getAnthropicModel } from './anthropic.model';
+import { env } from 'node:process';
 
-export function getAnthropicModel(apiKey: string) {
-  const anthropic = createAnthropic({
-    apiKey,
-  });
+const PROVIDERS = {
+  openai: getOpenaiModel,
+  anthropic: getAnthropicModel,
+};
 
-  return anthropic('claude-3-5-sonnet-20240620');
-}
+export const getModel = (cloudflareEnv: Env) => {
+  const provider = (env.AI_PROVIDER as 'openai') ?? 'openai';
+  return PROVIDERS[provider](cloudflareEnv);
+};
