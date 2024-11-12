@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  nextjs-serveraction:
+    image: liuhuapiaoyuan/nextjs-serveraction
+    ports:
+      - "5153:5143"
+    envfile:
+      - .env
+    restart: always
