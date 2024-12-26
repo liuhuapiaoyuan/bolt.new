@@ -24,10 +24,8 @@ export function streamText(messages: Messages, env: Env, options?: StreamingOpti
   return _streamText({
     model: getModel(env),
     system: getSystemPrompt(),
-    maxTokens: MAX_TOKENS,
-    headers: {
-      'anthropic-beta': 'max-tokens-3-5-sonnet-2024-07-15',
-    },
+    maxTokens: Number(MAX_TOKENS),
+    headers: { },
     messages: convertToCoreMessages(messages),
     ...options,
   });

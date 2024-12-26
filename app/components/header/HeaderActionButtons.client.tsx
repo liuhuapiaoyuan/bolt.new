@@ -7,6 +7,7 @@ interface HeaderActionButtonsProps {}
 
 export function HeaderActionButtons({}: HeaderActionButtonsProps) {
   const showWorkbench = useStore(workbenchStore.showWorkbench);
+  const exporting = useStore(workbenchStore.exporting);
   const { showChat } = useStore(chatStore);
 
   const canHideChat = showWorkbench || !showChat;
@@ -38,6 +39,17 @@ export function HeaderActionButtons({}: HeaderActionButtonsProps) {
         >
           <div className="i-ph:code-bold" />
         </Button>
+        <Button
+          active
+          disabled={exporting}
+          onClick={() => {
+            workbenchStore.exportZip();
+          }}
+        >
+          {exporting ? <div className="i-ph:spinner-gap" /> : <div className="i-ph:download-bold" />}
+
+          <span className="text-xs">打包下载</span>
+        </Button>
       </div>
     </div>
   );
@@ -56,7 +68,8 @@ function Button({ active = false, disabled = false, children, onClick }: ButtonP
       className={classNames('flex items-center p-1.5', {
         'bg-bolt-elements-item-backgroundDefault hover:bg-bolt-elements-item-backgroundActive text-bolt-elements-textTertiary hover:text-bolt-elements-textPrimary':
           !active,
-        'bg-bolt-elements-item-backgroundAccent text-bolt-elements-item-contentAccent': active && !disabled,
+        'bg-bolt-elements-item-backgroundAccent text-bolt-elements-item-contentAccent hover:text-bolt-elements-item-contentActive ':
+          active && !disabled,
         'bg-bolt-elements-item-backgroundDefault text-alpha-gray-20 dark:text-alpha-white-20 cursor-not-allowed':
           disabled,
       })}

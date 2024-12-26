@@ -28,6 +28,7 @@ interface BaseChatProps {
 }
 
 const EXAMPLE_PROMPTS = [
+  { text: '使用vue,tailwindicss 创建一个简单的五子棋游戏，能够跟AI对战' },
   { text: 'Build a todo app in React using Tailwind' },
   { text: 'Build a simple blog using Astro' },
   { text: 'Create a cookie consent form using Material UI' },

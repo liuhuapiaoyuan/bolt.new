@@ -1,54 +1,69 @@
-[![Bolt.new: AI-Powered Full-Stack Web Development in the Browser](./public/social_preview_index.jpg)](https://bolt.new)
+[![Bolt.new: 基于AI驱动的浏览器全栈Web开发](./public/social_preview_index.jpg)](https://bolt.new)
 
-# Bolt.new: AI-Powered Full-Stack Web Development in the Browser
+# 🎉 DeepSeek-V3 正式发布，已在网页端和 API 全面上线，性能领先，速度飞跃，点击查看详情
 
-Bolt.new is an AI-powered web development agent that allows you to prompt, run, edit, and deploy full-stack applications directly from your browser—no local setup required. If you're here to build your own AI-powered web dev agent using the Bolt open source codebase, [click here to get started!](./CONTRIBUTING.md)
+[![DeepSeek-V3 正式发布，已在网页端和 API 全面上线，性能领先，速度飞跃，点击查看详情。](doc/deepseek.png)](https://www.deepseek.com/)
 
-## What Makes Bolt.new Different
+# Bolt.new: 基于AI驱动的浏览器全栈Web开发
 
-Claude, v0, etc are incredible- but you can't install packages, run backends or edit code. That’s where Bolt.new stands out:
+Bolt.new是一个AI驱动的Web开发代理，允许您直接在浏览器中提示、运行、编辑和部署全栈应用程序——无需本地设置。如果您想使用Bolt开源代码库构建自己的AI驱动的Web开发代理，[点击这里开始！](./CONTRIBUTING.md)
 
-- **Full-Stack in the Browser**: Bolt.new integrates cutting-edge AI models with an in-browser development environment powered by **StackBlitz’s WebContainers**. This allows you to:
-  - Install and run npm tools and libraries (like Vite, Next.js, and more)
-  - Run Node.js servers
-  - Interact with third-party APIs
-  - Deploy to production from chat
-  - Share your work via a URL
+# 🚀 本项目基于bolt.new修改，集成了deepseek-v3的强大能力！
 
-- **AI with Environment Control**: Unlike traditional dev environments where the AI can only assist in code generation, Bolt.new gives AI models **complete control** over the entire  environment including the filesystem, node server, package manager, terminal, and browser console. This empowers AI agents to handle the entire app lifecycle—from creation to deployment.
+## 🔥 重点亮点：
 
-Whether you’re an experienced developer, a PM or designer, Bolt.new allows you to build production-grade full-stack applications with ease.
+1. 集成了deepseek-v3模型，大幅提升了代码生成和理解能力
+2. 支持更复杂的项目结构和多语言开发
+3. 优化了用户交互界面，提供更直观的AI辅助编程体验
 
-For developers interested in building their own AI-powered development tools with WebContainers, check out the open-source Bolt codebase in this repo!
+👨‍💻 欢迎大家亲身体验这个革命性的AI驱动开发工具！
 
-## Tips and Tricks
+## Bolt.new的独特之处
 
-Here are some tips to get the most out of Bolt.new:
+Claude、v0等确实很棒，但你无法安装软件包、运行后端或编辑代码。这就是Bolt.new的突出之处：
 
-- **Be specific about your stack**: If you want to use specific frameworks or libraries (like Astro, Tailwind, ShadCN, or any other popular JavaScript framework), mention them in your initial prompt to ensure Bolt scaffolds the project accordingly.
+- **浏览器中的全栈开发**：Bolt.new将尖端AI模型与由**StackBlitz的WebContainers**驱动的浏览器内开发环境集成。这允许您：
 
-- **Use the enhance prompt icon**: Before sending your prompt, try clicking the 'enhance' icon to have the AI model help you refine your prompt, then edit the results before submitting.
+  - 安装和运行npm工具和库（如Vite、Next.js等）
+  - 运行Node.js服务器
+  - 与第三方API交互
+  - 从聊天中部署到生产环境
+  - 通过URL分享您的作品
 
-- **Scaffold the basics first, then add features**: Make sure the basic structure of your application is in place before diving into more advanced functionality. This helps Bolt understand the foundation of your project and ensure everything is wired up right before building out more advanced functionality.
+- **具有环境控制的AI**：与传统开发环境中AI只能辅助代码生成不同，Bolt.new赋予AI模型对整个环境的**完全控制**，包括文件系统、node服务器、包管理器、终端和浏览器控制台。这使AI代理能够处理从创建到部署的整个应用生命周期。
 
-- **Batch simple instructions**: Save time by combining simple instructions into one message. For example, you can ask Bolt to change the color scheme, add mobile responsiveness, and restart the dev server, all in one go saving you time and reducing API credit consumption significantly.
+无论您是经验丰富的开发人员，还是产品经理或设计师，Bolt.new都能让您轻松构建生产级的全栈应用程序。
 
-## FAQs
+对于有兴趣使用WebContainers构建自己的AI驱动开发工具的开发人员，请查看本仓库中的开源Bolt代码库！
 
-**Where do I sign up for a paid plan?**  
-Bolt.new is free to get started. If you need more AI tokens or want private projects, you can purchase a paid subscription in your [Bolt.new](https://bolt.new) settings, in the lower-left hand corner of the application. 
+## 使用技巧
 
-**What happens if I hit the free usage limit?**  
-Once your free daily token limit is reached, AI interactions are paused until the next day or until you upgrade your plan.
+以下是一些充分利用Bolt.new的技巧：
 
-**Is Bolt in beta?**  
-Yes, Bolt.new is in beta, and we are actively improving it based on feedback.
+- **明确指定您的技术栈**：如果您想使用特定的框架或库（如Astro、Tailwind、ShadCN或任何其他流行的JavaScript框架），请在初始提示中提及它们，以确保Bolt正确搭建项目。
 
-**How can I report Bolt.new issues?**  
-Check out the [Issues section](https://github.com/stackblitz/bolt.new/issues) to report an issue or request a new feature. Please use the search feature to check if someone else has already submitted the same issue/request.
+- **使用增强提示图标**：在发送提示之前，尝试点击"增强"图标，让AI模型帮助您完善提示，然后编辑结果再提交。
 
-**What frameworks/libraries currently work on Bolt?**  
-Bolt.new supports most popular JavaScript frameworks and libraries. If it runs on StackBlitz, it will run on Bolt.new as well.
+- **先搭建基础，再添加功能**：在深入更高级的功能之前，确保应用程序的基本结构已就位。这有助于Bolt理解您项目的基础，并确保在构建更高级功能之前一切都正确连接。
 
-**How can I add make sure my framework/project works well in bolt?**  
-We are excited to work with the JavaScript ecosystem to improve functionality in Bolt. Reach out to us via [hello@stackblitz.com](mailto:hello@stackblitz.com) to discuss how we can partner!
+- **批量简单指令**：通过将简单指令组合到一条消息中来节省时间。例如，您可以一次性要求Bolt更改配色方案、添加移动响应性并重启开发服务器，这样可以显著节省时间并减少API信用消耗。
+
+## 常见问题
+
+**我在哪里注册付费计划？**  
+Bolt.new可以免费开始使用。如果您需要更多AI令牌或想要私有项目，可以在[Bolt.new](https://bolt.new)设置中购买付费订阅，设置位于应用程序的左下角。
+
+**如果我达到免费使用限制会怎样？**  
+一旦达到每日免费令牌限制，AI交互将暂停，直到第二天或您升级计划。
+
+**Bolt是否处于测试阶段？**  
+是的，Bolt.new正处于测试阶段，我们正根据反馈积极改进它。
+
+**如何报告Bolt.new的问题？**  
+查看[问题部分](https://github.com/stackblitz/bolt.new/issues)来报告问题或请求新功能。请使用搜索功能检查是否有人已经提交了相同的问题/请求。
+
+**Bolt目前支持哪些框架/库？**  
+Bolt.new支持大多数流行的JavaScript框架和库。如果它可以在StackBlitz上运行，那么它也可以在Bolt.new上运行。
+
+**如何确保我的框架/项目在Bolt中运行良好？**  
+我们很高兴与JavaScript生态系统合作，以改进Bolt中的功能。通过[hello@stackblitz.com](mailto:hello@stackblitz.com)联系我们，讨论如何合作！

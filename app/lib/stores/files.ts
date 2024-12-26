@@ -8,6 +8,8 @@ import { WORK_DIR } from '~/utils/constants';
 import { computeFileModifications } from '~/utils/diff';
 import { createScopedLogger } from '~/utils/logger';
 import { unreachable } from '~/utils/unreachable';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 
 const logger = createScopedLogger('FilesStore');
 
@@ -78,6 +80,13 @@ export class FilesStore {
 
   resetFileModifications() {
     this.#modifiedFiles.clear();
+  }
+
+  /**
+   * 增加导出代码.
+   */
+  exportZip() {
+    buildZip(this.files.get());
   }
 
   async saveFile(filePath: string, content: string) {
@@ -218,3 +227,30 @@ function convertToBuffer(view: Uint8Array): Buffer {
 
   return buffer as Buffer;
 }
+
+const buildZip = async (fileStructure: FileMap) => {
+  const zip = new JSZip();
+
+  // 递归处理文件结构
+  const addFilesToZip = (structure: FileMap, currentPath: string) => {
+    Object.keys(structure).forEach((key) => {
+      const item = structure[key];
+      const filePath = key.replace(`${WORK_DIR}/`, '');
+
+      const itemPath = currentPath ? `${currentPath}/${filePath}` : filePath;
+
+      if (item?.type === 'file') {
+        zip.file(itemPath, item.content);
+      } else if (item?.type === 'folder') {
+        zip.folder(itemPath);
+      }
+    });
+  };
+
+  // 开始处理文件结构
+  addFilesToZip(fileStructure, '');
+
+  // 生成 ZIP 文件并触发下载
+  const content = await zip.generateAsync({ type: 'blob' });
+  saveAs(content, 'project.zip');
+};

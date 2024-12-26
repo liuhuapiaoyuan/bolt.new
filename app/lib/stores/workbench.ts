@@ -37,6 +37,8 @@ export class WorkbenchStore {
   modifiedFiles = new Set<string>();
   artifactIdList: string[] = [];
 
+  exporting: WritableAtom<boolean> = import.meta.hot?.data.exporting ?? atom(false);
+
   constructor() {
     if (import.meta.hot) {
       import.meta.hot.data.artifacts = this.artifacts;
@@ -52,6 +54,18 @@ export class WorkbenchStore {
 
   get files() {
     return this.#filesStore.files;
+  }
+  exportZip() {
+    this.exporting.set(true);
+
+    try {
+      this.#filesStore.exportZip();
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'None';
+      alert('Export Error: ' + message);
+    } finally {
+      this.exporting.set(false);
+    }
   }
 
   get currentDocument(): ReadableAtom<EditorDocument | undefined> {
@@ -214,6 +228,16 @@ export class WorkbenchStore {
     // TODO: what do we wanna do and how do we wanna recover from this?
   }
 
+  async #addDefaultFiles(messageId: string) {
+    const action = {
+      type: 'file' as const,
+      filePath: '.npmrc',
+      content: `registry=https://registry.npmmirror.com/`,
+    };
+    const artifact = this.#getArtifact(messageId);
+    artifact.runner.addFileAction(action);
+  }
+
   addArtifact({ messageId, title, id }: ArtifactCallbackData) {
     const artifact = this.#getArtifact(messageId);
 
@@ -231,6 +255,7 @@ export class WorkbenchStore {
       closed: false,
       runner: new ActionRunner(webcontainer),
     });
+    this.#addDefaultFiles(messageId);
   }
 
   updateArtifact({ messageId }: ArtifactCallbackData, state: Partial<ArtifactUpdateState>) {

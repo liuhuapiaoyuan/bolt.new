@@ -1,4 +1,4 @@
-import { WebContainer } from '@webcontainer/api';
+import { WebContainer, type DirEnt } from '@webcontainer/api';
 import { map, type MapStore } from 'nanostores';
 import * as nodePath from 'node:path';
 import type { BoltAction } from '~/types/actions';
@@ -149,6 +149,30 @@ export class ActionRunner {
     logger.debug(`Process terminated with code ${exitCode}`);
   }
 
+  async addFileAction(file: { filePath: string; content: string }) {
+    const webcontainer = await this.#webcontainer;
+
+    let folder = nodePath.dirname(file.filePath);
+
+    // remove trailing slashes
+    folder = folder.replace(/\/+$/g, '');
+
+    if (folder !== '.') {
+      try {
+        await webcontainer.fs.mkdir(folder, { recursive: true });
+        logger.debug('Created folder', folder);
+      } catch (error) {
+        logger.error('Failed to create folder\n\n', error);
+      }
+    }
+
+    try {
+      await webcontainer.fs.writeFile(file.filePath, file.content);
+      logger.debug(`File written ${file.filePath}`);
+    } catch (error) {
+      logger.error('Failed to write file\n\n', error);
+    }
+  }
   async #runFileAction(action: ActionState) {
     if (action.type !== 'file') {
       unreachable('Expected file action');
