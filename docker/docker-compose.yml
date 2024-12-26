@@ -1,10 +1,10 @@
 version: '3'
 
 services:
-  nextjs-serveraction:
-    image: liuhuapiaoyuan/nextjs-serveraction
+  bolt:
+    image: liuhuapiaoyuan/bolt.new
     ports:
-      - "5153:5143"
-    envfile:
+      - "5153:5173"
+    env_file:
       - .env
     restart: always
