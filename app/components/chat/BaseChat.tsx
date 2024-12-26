@@ -28,7 +28,7 @@ interface BaseChatProps {
 }
 
 const EXAMPLE_PROMPTS = [
-  { text: '使用vue,tailwindicss 创建一个简单的五子棋游戏，能够跟AI对战' },
+  { text: '使用vue,vite,canvas 创建一个简单的五子棋游戏，能够跟AI对战' },
   { text: 'Build a todo app in React using Tailwind' },
   { text: 'Build a simple blog using Astro' },
   { text: 'Create a cookie consent form using Material UI' },
@@ -131,7 +131,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                       minHeight: TEXTAREA_MIN_HEIGHT,
                       maxHeight: TEXTAREA_MAX_HEIGHT,
                     }}
-                    placeholder="How can Bolt help you today?"
+                    placeholder="How can DeepSeek&Bolt help you today?"
                     translate="no"
                   />
                   <ClientOnly>

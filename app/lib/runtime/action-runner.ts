@@ -126,6 +126,7 @@ export class ActionRunner {
       unreachable('Expected shell action');
     }
 
+    const processError = this.processError.bind(this);
     const webcontainer = await this.#webcontainer;
 
     const process = await webcontainer.spawn('jsh', ['-c', action.content], {
@@ -139,6 +140,10 @@ export class ActionRunner {
     process.output.pipeTo(
       new WritableStream({
         write(data) {
+          if (data && data.includes('Error')) {
+            processError(data);
+          }
+
           console.log(data);
         },
       }),
